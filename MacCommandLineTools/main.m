@@ -65,25 +65,29 @@ int main(int argc, const char * argv[]) {
         printf("任务进行中...\n");
         sleep(1);
         openFile(true);//打开文件
-        ///轮询判断
-        while (1) {
-            sleep(1);
-            struct tm *p;
-            time_t ptime;
-            time(&ptime);
-            p = gmtime(&ptime);
-            int hour,min,sec;
-            hour = p->tm_hour + 8;
-            min = p->tm_min;
-            sec = p->tm_sec;
-//            printf("%d:%d:%d\n",p->tm_hour + 8,p->tm_min,p->tm_sec);
-            if (((hour == 9)&&(min == 0)&&(sec == 0))||((hour == 19)&&(min == 0)&&(sec == 0))) {
-                keyboardClick(13, kCGEventFlagMaskCommand);//关闭文件
-                sleep(1);
-                autoDaka();
-                printf("成功:%d:%d:%d\n",p->tm_hour + 8,p->tm_min,p->tm_sec);
-            }
-        }
+//        ///轮询判断
+//        while (1) {
+//            sleep(1);
+//            struct tm *p;
+//            time_t ptime;
+//            time(&ptime);
+//            p = gmtime(&ptime);
+//            int hour,min,sec;
+//            hour = p->tm_hour + 8;
+//            min = p->tm_min;
+//            sec = p->tm_sec;
+////            printf("%d:%d:%d\n",p->tm_hour + 8,p->tm_min,p->tm_sec);
+//            if (((hour == 9)&&(min == 0)&&(sec == 0))||((hour == 19)&&(min == 0)&&(sec == 0))) {
+//                keyboardClick(13, kCGEventFlagMaskCommand);//关闭文件
+//                sleep(1);
+//                autoDaka();
+//                printf("成功:%d:%d:%d\n",p->tm_hour + 8,p->tm_min,p->tm_sec);
+//            }
+//        }
+        sleep(2);
+        keyboardClick(13, kCGEventFlagMaskCommand);//关闭文件
+        sleep(1);
+        autoDaka();
     }
     return 0;
 }
