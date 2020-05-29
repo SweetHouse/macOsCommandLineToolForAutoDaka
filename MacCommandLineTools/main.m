@@ -43,19 +43,19 @@ void autoDaka(){
     ///点击登录
     CGEventRef theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(1318, 360), kCGMouseButtonLeft);
     mouseClick(theEvent);
-    sleep(3);
+    sleep(5);
     ///打
     theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(1337, 115), kCGMouseButtonLeft);
     mouseClick(theEvent);
-    sleep(3);
+    sleep(5);
     ///退出登录
     theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(2025, 26), kCGMouseButtonLeft);
     mouseClick(theEvent);
-    sleep(3);
+    sleep(5);
     CFRelease(theEvent);
     ///关闭浏览器
     runCommandLine(@"pkill Google Chrome");
-    sleep(3);
+    sleep(5);
     ///打开图片
     runCommandLine(@"open /Users/w9005556/Desktop/black.png");
     sleep(5);
@@ -90,7 +90,7 @@ int main(int argc, const char * argv[]) {
                     runCommandLine(@"pkill Preview");
                     ///打开图片
                     runCommandLine(@"open /Users/w9005556/Desktop/black.png");
-                    sleep(5);
+                    sleep(10);
                     keyboardClick(3, kCGEventFlagMaskCommand ^ kCGEventFlagMaskControl);//全屏
                     ///随机分秒
                     int randomMin,randomSec;
@@ -113,7 +113,7 @@ int main(int argc, const char * argv[]) {
                             runCommandLine(@"pkill Preview");
                             sleep(3);
                             runCommandLine(@"open -a \"/Applications/Google Chrome.app\" --args  --kiosk  'https://oms.myoas.com'");
-                            sleep(7);
+                            sleep(30);
                             autoDaka();
                             //重新生成随机分秒
                             randomMin = arc4random()%20 + 40;
