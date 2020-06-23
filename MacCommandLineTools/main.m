@@ -41,20 +41,20 @@ void mouseClick(CGEventRef theEvent){
 ///功能
 void autoDaka(){
     ///点击登录
-    CGEventRef theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(1318, 360), kCGMouseButtonLeft);
+    CGEventRef theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(1318, 471), kCGMouseButtonLeft);
     mouseClick(theEvent);
     sleep(5);
     ///打
-    theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(1337, 115), kCGMouseButtonLeft);
+    theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(1337, 221), kCGMouseButtonLeft);
     mouseClick(theEvent);
     sleep(5);
     ///退出登录
-    theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(2025, 26), kCGMouseButtonLeft);
+    theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(2025, 130), kCGMouseButtonLeft);
     mouseClick(theEvent);
     sleep(5);
     CFRelease(theEvent);
     ///关闭浏览器
-    runCommandLine(@"pkill Google Chrome");
+    runCommandLine(@"pkill firefox");
     sleep(5);
     ///打开图片
     runCommandLine(@"open /Users/w9005556/Desktop/black.png");
@@ -85,7 +85,7 @@ int main(int argc, const char * argv[]) {
             case 1:
                 {
                     ///关闭浏览器
-                    runCommandLine(@"pkill Google Chrome");
+                    runCommandLine(@"pkill firefox");
                     ///关闭图片
                     runCommandLine(@"pkill Preview");
                     ///打开图片
@@ -112,7 +112,7 @@ int main(int argc, const char * argv[]) {
                             ///关闭图片
                             runCommandLine(@"pkill Preview");
                             sleep(3);
-                            runCommandLine(@"open -a \"/Applications/Google Chrome.app\" --args  --kiosk  'https://oms.myoas.com'");
+                            runCommandLine(@"open -a \"/Applications/firefox.app\" --args  --kiosk  'https://oms.myoas.com'");
                             sleep(30);
                             autoDaka();
                             //重新生成随机分秒
