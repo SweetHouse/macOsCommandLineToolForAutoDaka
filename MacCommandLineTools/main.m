@@ -14,6 +14,7 @@ void keyboardClick(int keyCode,CGEventFlags flags){
         CGEventPost(kCGSessionEventTap, controlUp);//谜之keyUp，用完flag需要弹起
         CFRelease(keyDown);
         CFRelease(keyUp);
+        sleep(1);
     }else{
         CGEventPost(kCGSessionEventTap, keyDown);
         CGEventPost(kCGSessionEventTap, keyUp);
