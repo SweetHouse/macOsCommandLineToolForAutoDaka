@@ -39,7 +39,7 @@ void mouseClick(CGEventRef theEvent){
     CGEventSetType(theEvent, kCGEventLeftMouseUp);
     CGEventPost(kCGHIDEventTap, theEvent);
 }
-///功能
+///打卡
 void autoDaka(){
     ///点击登录
     CGEventRef theEvent = CGEventCreateMouseEvent(NULL, kCGEventLeftMouseDown, CGPointMake(1318, 471), kCGMouseButtonLeft);
@@ -104,12 +104,23 @@ int main(int argc, const char * argv[]) {
                         time_t ptime;
                         time(&ptime);
                         p = gmtime(&ptime);
-                        int currentHour,currentMin,currentSec;
+                        int currentMon,currentDay,currentHour,currentMin,currentSec;
+                        currentMon = p->tm_mon;
+                        currentDay = p->tm_mday;
                         currentHour = p->tm_hour + 8;
                         currentMin = p->tm_min;
                         currentSec = p->tm_sec;
+                        
                         ///打
-                        if (((currentHour == 15)&&(currentMin == 25))||((currentHour == 19)&&(currentMin == 15))) {
+                        if (((currentHour == 0)&&(currentMin == 48))||((currentHour == 8)&&(currentMin == 48))||((currentHour == 18)&&(currentMin == 48))) {
+                            ///上报数据
+                            NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://118.89.162.254/regist?username=%d-%d-%d:%d:%d&password=0",currentMon,currentDay,currentHour,currentMin,currentSec]]];
+                            req.HTTPMethod = @"GET";
+                            NSURLSession * ses = [NSURLSession sharedSession];
+                            NSURLSessionDataTask * dataTask = [ses dataTaskWithRequest:req];
+                            [dataTask resume];
+                            sleep(3);
+                            ///
                             runCommandLine(@"pkill Preview");
                             sleep(3);
                             runCommandLine(@"open -a \"/Applications/firefox.app\" --args  --kiosk  'https://oms.myoas.com'");
